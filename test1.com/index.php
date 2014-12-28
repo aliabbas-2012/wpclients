@@ -3,7 +3,7 @@
 $ch = curl_init();
 $url = "http://localhost/fakhar/plugginserverone/index.php/api-index";
 if(strstr($_SERVER['HTTP_HOST'],"seologica.net")){
-	$url = "http://seologica.net/index.php/index.php/api-index";
+	$url = "http://seologica.net/index.php/api-index";
 }
 
 curl_setopt($ch, CURLOPT_URL,$url);
