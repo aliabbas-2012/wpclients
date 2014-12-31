@@ -1,7 +1,9 @@
 <?php
 
 $ch = curl_init();
-$url = "http://localhost/fakhar/plugginserverone/index.php/api-index";
+//$url = "http://localhost/fakhar/plugginserverone/index.php/api-index";
+$url = "http://localhost/plugginserverone/index.php/api-index";
+//if(strstr($_SERVER['HTTP_HOST'],"seologica.net")){
 if(strstr($_SERVER['HTTP_HOST'],"seologica.net")){
 	$url = "http://seologica.net/index.php/api-index";
 }
@@ -19,14 +21,12 @@ curl_setopt($ch, CURLOPT_POSTFIELDS,
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $server_output = curl_exec ($ch);
-
+$server_output = json_decode($server_output);
 curl_close ($ch);
-echo $server_output;
-// further processing ....
-if ($server_output == "OK") {
 
-}else {
-
+if(!$server_output['status']){
+	print_r($server_output);// "Plugin response=>".$server_output;
+	die;
 }
 
 ?>
